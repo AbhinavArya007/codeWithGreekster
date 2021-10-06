@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function validate() {
+            var text;
+            if (document.myForm.name.value == "") {
+                text = "Name cann't be empty !!";
+                document.getElementById("demo").innerHTML = text;
+                document.myForm.name.focus();
+                return false;
+            }
+            if (document.myForm.email.value == "") {
+                text = "email cann't be empty !!";
+                document.getElementById("demo").innerHTML = text;
+                document.myForm.email.focus();
+                return false;
+            }
+            var email = document.myForm.email.value;
+            atpos = email.indexOf("@");
+            dotpos = email.lastIndexOf(".");
+            text = "Please Enter a valid email id !!";
+            if (atpos < 1 || (dotpos - atpos < 2)) {
+                document.getElementById("demo").innerHTML = text;
+                document.myForm.email.focus();
+                return false;
+            }
+            if (document.myForm.phone.value == "" || document.myForm.phone.value.length != 10) {
+                text = "Please enter a valid phone number !!"
+                document.getElementById("demo").innerHTML = text;
+                document.myForm.phone.focus();
+                return false;
+            }
+            if (document.myForm.subject.value == "0") {
+                text = "Please provide your area of expertise !!"
+                document.getElementById("demo").innerHTML = text;
+                return false;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <form action="#" name="myForm" onsubmit="return(validate());">
+            <h1 align="center"> User Registration</h1>
+            <table align="center" cellspacing="3" cellpadding="3" border="3">
+                <tr>
+                    <td align="right">Name</td>
+                    <td><input type="text" name="name" /></td>
+                </tr>
+                <tr>
+                    <td align="right">E-mail</td>
+                    <td><input type="text" name="email" /></td>
+                </tr>
+                <tr>
+                    <td align="right">Phone Number</td>
+                    <td><input type="number" name="phone" /></td>
+                </tr>
+                <tr>
+                    <td align="right">Subject</td>
+                    <td>
+                        <select name="subject">
+                         <option value = "0" selected>Select</option>
+                         <option value = "1">HTML</option>
+                         <option value = "2">JavaScript</option>
+                         <option value = "3">CSS</option>
+                         <option value = "4">JSP</option>
+                      </select>
+                    </td>
+                </tr>
+            </table>
+            <p id="demo" style="color:red; text-align:center"></p>
+            <div style="text-align:center"><input type="submit" value="Submit" /></div>
+        </form>
+    </div>
+
+</body>
+
+</html>
